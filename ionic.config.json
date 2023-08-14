@@ -1,0 +1,7 @@
+{
+  "name": "club-admin",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
