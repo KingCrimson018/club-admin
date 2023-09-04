@@ -1,0 +1,48 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Banco Virtual</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" color="medium">
+  <ion-refresher slot="fixed" [pullFactor]="0.5" [pullMin]="100" [pullMax]="200" (ionRefresh)="getTransactionsRefreshed($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <ion-grid fixed id="container">
+    <ion-row id="header">
+      <ion-col size="7" id="generalInfo">
+        <div>
+          <ion-avatar>
+            <img [src]="" />
+          </ion-avatar>
+          <ion-label>
+            <h2>{{userS.logged?.firstName}}</h2>
+            <h2>{{userS.logged?.lastName}}</h2>
+          </ion-label>
+        </div>
+        <div id="club">
+          <ion-avatar>
+            <img [src]="" />
+          </ion-avatar>
+          <ion-label>
+            <h2>{{userS.logged?.clubName}}</h2>
+            <h2>{{userS.logged?.clubZone}}</h2>
+          </ion-label>
+        </div>
+      </ion-col>
+      <ion-col size="5" id="balance">
+        <div>
+          <h2>{{userS.logged?.total}}</h2>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row id="transactions">
+      <ion-col size="12" *ngFor="let tr of ts.transactions">
+        <app-individual-transactions [transaction]="tr"></app-individual-transactions>
+      </ion-col>
+      <ion-infinite-scroll (ionInfinite)="getMoreTransactions($event)">
+        <ion-infinite-scroll-content></ion-infinite-scroll-content>
+      </ion-infinite-scroll>
+    </ion-row>
+  </ion-grid>
+</ion-content>

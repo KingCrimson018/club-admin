@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "267116688432",
+    "project_id": "club-admin-8d8cc",
+    "storage_bucket": "club-admin-8d8cc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:267116688432:android:1e566ad92772a2719b29f5",
+        "android_client_info": {
+          "package_name": "io.ionic.starter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "267116688432-jtifs080gl9nkonl3nj0g12u1n9ak5js.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB3Y5pWe3lSrcZp4vkR3GxIU52sXQcZ-6o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "267116688432-4e7u7bd9p9vlfj1molcu54ns2n868og1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

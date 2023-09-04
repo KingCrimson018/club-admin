@@ -1,0 +1,14 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-input type="text" [(ngModel)]="email" placeholder="Email: "></ion-input>
+  <ion-input type="password" [(ngModel)]="password" placeholder="Password: "></ion-input>
+
+  <ion-button (click)="logIn()" expand="block" fill="clear" shape="round">
+    Log In
+  </ion-button>
+</ion-content>

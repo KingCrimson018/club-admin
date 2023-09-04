@@ -1,0 +1,62 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>clubs</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" color="medium">
+  <ion-grid id="container">
+    <ion-row id="filter">
+      <ion-col size="12">
+        <ion-item>
+          <ion-label>Zone</ion-label>
+          <ion-select value="" [(ngModel)]="zone" multiple="false" placeholder="Zone">
+            <ion-select-option value="Zone 1">Zone 1</ion-select-option>
+            <ion-select-option value="Zone 2">Zone 2</ion-select-option>
+            <ion-select-option value="Zone 3">Zone 3</ion-select-option>
+            <ion-select-option value="Zone 4">Zone 4</ion-select-option>
+            <ion-select-option value="Zone 5">Zone 5</ion-select-option>
+            <ion-select-option value="Zone 6">Zone 6</ion-select-option>
+            <ion-select-option value="Zone 7">Zone 7</ion-select-option>
+            <ion-select-option value="Zone 8">Zone 8</ion-select-option>
+            <ion-select-option value="Zone 9">Zone 9</ion-select-option>
+            <ion-select-option value="Zone 10">Zone 10</ion-select-option>
+            <ion-select-option value="Zone 11">Zone 11</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-col>
+      <!-- <ion-col size="6">
+        <ion-item>
+          <ion-input label="Less Than" label-placement="floating" placeholder="Less Than" [(ngModel)]="lessThan"></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col size="6">
+        <ion-item>
+          <ion-input label="Greater Than" label-placement="floating" placeholder="Greater Than" [(ngModel)]="greaterThan"></ion-input>
+        </ion-item>
+      </ion-col> -->
+      <ion-col size="12">
+        <ion-button (click)="filter()" expand="block" shape="round">
+          Filter
+        </ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-row id="clubs" class="ion-justify-content-center">
+      <ion-col size="12" *ngFor="let club of adminS.clubs">
+        <div>
+          <ion-avatar>
+            <img [src]=""/>
+          </ion-avatar>
+          <ion-label>
+            <p>{{club.name}}</p>
+            <p>{{club.zone}}</p>
+          </ion-label>
+        </div>
+        <p>{{club.total}}</p>
+      </ion-col>
+      <ion-infinite-scroll (ionInfinite)="keepGeneratingClubs()">
+        <ion-infinite-scroll-content></ion-infinite-scroll-content>
+      </ion-infinite-scroll>
+    </ion-row>
+  </ion-grid>
+</ion-content>

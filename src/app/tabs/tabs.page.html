@@ -1,20 +1,23 @@
 <ion-tabs>
 
   <ion-tab-bar slot="bottom">
-    <ion-tab-button tab="tab1">
-      <ion-icon aria-hidden="true" name="triangle"></ion-icon>
-      <ion-label>Tab 1</ion-label>
+    <ion-tab-button tab="index">
+      <ion-icon aria-hidden="true" name="home" size="large"></ion-icon>
     </ion-tab-button>
 
-    <ion-tab-button tab="tab2">
-      <ion-icon aria-hidden="true" name="ellipse"></ion-icon>
-      <ion-label>Tab 2</ion-label>
+    <ion-tab-button id="open-modal" (click)="openAdd()">
+      <ion-icon aria-hidden="true" name="add" size="large"></ion-icon>
     </ion-tab-button>
 
-    <ion-tab-button tab="tab3">
-      <ion-icon aria-hidden="true" name="square"></ion-icon>
-      <ion-label>Tab 3</ion-label>
+    <ion-tab-button tab="menu">
+      <ion-icon aria-hidden="true" name="menu-outline" size="large"></ion-icon>
     </ion-tab-button>
   </ion-tab-bar>
 
+
+    <!-- <ion-modal trigger="open-modal">
+      <ng-template>
+        <app-make-transaction></app-make-transaction>
+      </ng-template>
+    </ion-modal> -->
 </ion-tabs>

@@ -1,0 +1,48 @@
+#container{
+    background-color: var(--ion-color-light);
+    border-radius: 15px;
+    ion-row{
+        #general-info{
+            small{
+                font-size: 18px;
+                font-family: 'Irish-Grover';
+                font-weight: bold;
+            }
+            div{
+                margin-top: 1vh;
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+            }
+            #description{
+                margin-top: 5vh;
+            }
+        }
+        #amount-info{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            small{
+                font-family: 'Inika';
+                font-weight: bold;
+                font-size: 11px;
+            }
+            div{
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                h2{
+                    font-size: 32px;
+                }
+            }
+        }
+    }
+}
+
+.green{
+    color: var(--ion-color-success);
+}
+.red{
+    color: var(--ion-color-danger);
+}

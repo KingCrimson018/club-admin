@@ -1,11 +1,55 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { GeneralGuardGuard } from './guards/general-guard.guard';
+import { AdminGuardGuard } from './guards/admin-guard.guard';
+import { DirectiveGuardGuard } from './guards/directive-guard.guard';
 
 const routes: Routes = [
   {
     path: '',
-    loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
+    loadChildren: () => import('./boarding/intro/intro.module').then( m => m.IntroPageModule)
+  },
+  {
+    path: 'login',
+    loadChildren: () => import('./boarding/login/login.module').then( m => m.LoginPageModule)
+  },
+  {
+    path: 'tabs',
+    loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule),
+    canActivate: [GeneralGuardGuard],
+  },
+  {
+    path: 'register',
+    loadChildren: () => import('./register/register.module').then( m => m.RegisterPageModule),
+    canActivate: [AdminGuardGuard]
+  },
+  {
+    path: 'add-user',
+    loadChildren: () => import('./club-administration/add-user/add-user.module').then( m => m.AddUserPageModule),
+    canActivate: [DirectiveGuardGuard]
+  },
+  {
+    path: 'directive-tabs',
+    loadChildren: () => import('./directive-tabs/directive-tabs.module').then( m => m.DirectiveTabsPageModule),
+    canActivate: [DirectiveGuardGuard]
+  },
+  {
+    path: 'admin-tabs',
+    loadChildren: () => import('./admin-tabs/admin-tabs.module').then( m => m.AdminTabsPageModule),
+    canActivate: [AdminGuardGuard]
+  },
+  {
+    path: 'add-club',
+    loadChildren: () => import('./admin-views/add-club/add-club.module').then(m => m.AddClubPageModule),
+    canActivate: [AdminGuardGuard]  
+  }, 
+  {
+    path: 'add-director',
+    loadChildren: () => import('./admin-views/add-director/add-director.module').then(m => m.AddDirectorPageModule),
+    canActivate: [AdminGuardGuard]
   }
+
+
 ];
 @NgModule({
   imports: [

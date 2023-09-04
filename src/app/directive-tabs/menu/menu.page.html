@@ -1,0 +1,20 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>menu</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-list>
+    <ion-item (click)="addUser()">
+      <ion-icon slot="start" name="person-outline"></ion-icon>
+      <ion-label>Add User</ion-label>
+      <ion-icon slot="end" name="arrow-forward"></ion-icon>
+    </ion-item>
+    <ion-item (click)="logOut()">
+      <ion-icon slot="start" name="log-out"></ion-icon>
+      <ion-label>Log Out</ion-label>
+      <ion-icon slot="end" name="arrow-forward"></ion-icon>
+    </ion-item>
+  </ion-list>
+</ion-content>

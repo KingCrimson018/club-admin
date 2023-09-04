@@ -1,0 +1,64 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <!-- <ion-buttons slot="start">
+      <ion-back-button (click)="deletePhoto()"></ion-back-button>
+    </ion-buttons> -->
+    <ion-title>add-director</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  
+  <div id="photo">
+    <div>
+      <ion-input type="file" placeholder="Awesome Input"></ion-input>
+      <img *ngIf="urlPhoto == ''" src="/src/assets/images/add.jpg" alt="">
+      <img *ngIf="urlPhoto != ''" [src]="urlPhoto" alt="">
+    </div>
+  </div>
+
+  <form [formGroup]="userForm" (ngSubmit)="addDirector()">
+    <ion-item>
+      <ion-label position="floating">First Name <ion-text color="danger">*</ion-text></ion-label>
+      <ion-input required formControlName="firstName" type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Last Name <ion-text color="danger">*</ion-text></ion-label>
+      <ion-input required formControlName="lastName" type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">E-Mail <ion-text color="danger">*</ion-text></ion-label>
+      <ion-input required formControlName="email" type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Password <ion-text color="danger">*</ion-text></ion-label>
+      <ion-input required formControlName="password" type="password"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Zone</ion-label>
+      <ion-select value="Zone 1" multiple="false" required formControlName="zone" (ionChange)="getClubs()" placeholder="Select Zone">
+        <ion-select-option value="Zone 1">Zone 1</ion-select-option>
+        <ion-select-option value="Zone 2">Zone 2</ion-select-option>
+        <ion-select-option value="Zone 3">Zone 3</ion-select-option>
+        <ion-select-option value="Zone 4">Zone 4</ion-select-option>
+        <ion-select-option value="Zone 5">Zone 5</ion-select-option>
+        <ion-select-option value="Zone 6">Zone 6</ion-select-option>
+        <ion-select-option value="Zone 7">Zone 7</ion-select-option>
+        <ion-select-option value="Zone 8">Zone 8</ion-select-option>
+        <ion-select-option value="Zone 9">Zone 9</ion-select-option>
+        <ion-select-option value="Zone 10">Zone 10</ion-select-option>
+        <ion-select-option value="Zone 11">Zone 11</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Club <ion-text color="danger">*</ion-text></ion-label>
+      <ion-select value="" multiple="false" placeholder="Select Club" formControlName="idClub">
+        <ion-select-option (click)="setClubName(club.name)" *ngFor="let club of clubs" [value]="club.id">{{club.name}}</ion-select-option>
+        
+      </ion-select>
+    </ion-item>
+    <ion-button block color="primary" type="submit" [disabled]="userForm.invalid">
+      Add
+    </ion-button>
+  </form>
+</ion-content>

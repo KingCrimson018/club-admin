@@ -1,0 +1,29 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>register</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <form [formGroup]="userForm" (ngSubmit)="createUser()">
+    <ion-item>
+      <ion-label position="floating">E-Mail <ion-text color="danger">*</ion-text></ion-label>
+      <ion-input required formControlName="email" type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">First Name <ion-text color="danger">*</ion-text></ion-label>
+      <ion-input required formControlName="firstName" type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Last Name <ion-text color="danger">*</ion-text></ion-label>
+      <ion-input required formControlName="lastName" type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Password <ion-text color="danger">*</ion-text></ion-label>
+      <ion-input required formControlName="password" type="text"></ion-input>
+    </ion-item>
+    <ion-button block color="primary" type="submit" [disabled]="userForm.invalid">
+      Sign In
+    </ion-button>
+  </form>
+</ion-content>

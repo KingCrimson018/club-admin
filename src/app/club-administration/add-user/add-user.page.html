@@ -1,0 +1,38 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>add-user</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+<form [formGroup]="userForm" (ngSubmit)="addUser()">
+  <ion-item>
+    <ion-label position="floating">First Name <ion-text color="danger">*</ion-text></ion-label>
+    <ion-input required formControlName="firstName" type="text"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Last Name <ion-text color="danger">*</ion-text></ion-label>
+    <ion-input required formControlName="lastName" type="text"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">E-Mail <ion-text color="danger">*</ion-text></ion-label>
+    <ion-input required formControlName="email" type="text"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Password <ion-text color="danger">*</ion-text></ion-label>
+    <ion-input required formControlName="password" type="password"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Role <ion-text color="danger">*</ion-text></ion-label>
+    <ion-select value="secretary" multiple="false" placeholder="Select Role">
+      <ion-select-option value="sub-director">Sub Director</ion-select-option>
+      <ion-select-option value="secretary">Secretary</ion-select-option>
+      <ion-select-option value="treasurer">Treasurer</ion-select-option>
+      <ion-select-option value="member">Member</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-button block color="primary" type="submit" [disabled]="userForm.invalid">
+    Add
+  </ion-button>
+</form>
+</ion-content>

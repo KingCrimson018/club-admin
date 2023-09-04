@@ -1,0 +1,48 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>index</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" color="medium">
+    <ion-refresher slot="fixed" [pullFactor]="0.5" [pullMin]="100" [pullMax]="200" (ionRefresh)="getTransactionsRefreshed($event)">
+      <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+  <ion-grid id="container">
+    <ion-row id="general">
+      <ion-col size="8" id="general-info">
+        <ion-avatar>
+          <img [src]="" />
+        </ion-avatar>
+        <ion-label>
+          <p>{{clubS.club?.name}}</p>
+          <p>{{clubS.club?.zone}}</p>
+        </ion-label>
+      </ion-col>
+      <ion-col size="4" id="balance">
+        <p>{{clubS.club?.total}}</p>
+      </ion-col>
+    </ion-row>
+
+    <ion-row id="top-balances">
+      <div *ngFor="let user of clubS.topBalances">
+        <ion-avatar>
+          <img [src]="" />
+        </ion-avatar>
+        <ion-label>
+          <p>{{user.firstName}}</p>
+          <p>{{user.lastName}}</p>
+        </ion-label>
+        <p>{{user.total}}</p>
+      </div>
+    </ion-row>
+    <ion-row id="transactions">
+      <ion-col size="12" *ngFor="let transaction of ts.transactions">
+        <app-individual-transactions [transaction]="transaction"></app-individual-transactions>
+      </ion-col>
+      <ion-infinite-scroll (ionInfinite)="getMoreTransactions($event)">
+        <ion-infinite-scroll-content></ion-infinite-scroll-content>
+      </ion-infinite-scroll>
+    </ion-row>
+  </ion-grid>
+</ion-content>

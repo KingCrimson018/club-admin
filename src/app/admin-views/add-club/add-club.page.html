@@ -1,0 +1,38 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>add-club</ion-title>
+    
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <form [formGroup]="clubForm" (ngSubmit)="addClub()">
+    <ion-item>
+      <ion-label position="floating">Club Name <ion-text color="danger">*</ion-text></ion-label>
+      <ion-input required formControlName="name" type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Zone <ion-text color="danger">*</ion-text></ion-label>
+      <ion-select value="Zone 1" multiple="false" required formControlName="zone" placeholder="Select Zone">
+        <ion-select-option value="Zone 1">Zone 1</ion-select-option>
+        <ion-select-option value="Zone 2">Zone 2</ion-select-option>
+        <ion-select-option value="Zone 3">Zone 3</ion-select-option>
+        <ion-select-option value="Zone 4">Zone 4</ion-select-option>
+        <ion-select-option value="Zone 5">Zone 5</ion-select-option>
+        <ion-select-option value="Zone 6">Zone 6</ion-select-option>
+        <ion-select-option value="Zone 7">Zone 7</ion-select-option>
+        <ion-select-option value="Zone 8">Zone 8</ion-select-option>
+        <ion-select-option value="Zone 9">Zone 9</ion-select-option>
+        <ion-select-option value="Zone 10">Zone 10</ion-select-option>
+        <ion-select-option value="Zone 11">Zone 11</ion-select-option>
+      </ion-select>
+    </ion-item>
+    
+    <ion-button block color="primary" type="submit" [disabled]="clubForm.invalid">
+      Create
+    </ion-button>
+  </form>
+</ion-content>

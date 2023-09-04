@@ -1,0 +1,66 @@
+#container{
+    background: var(--ion-color-light);
+    border-radius: 5px;
+    ion-row{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        .mini-container{
+            display: flex;
+            flex-direction: column;
+            width: 48%;
+            div{
+                .name{
+                    border-radius: 5px;
+                    padding: 5px;
+                    background: var(--ion-color-medium);
+                    display: flex;
+                    flex-direction: row;
+
+                    ion-avatar{
+                        width: 50px;
+                        height: 50px;
+                    }
+                    ion-label{
+                        margin-left: 5px;
+                        p{
+                            font-size: 12px;
+                        }
+                    }
+                }
+            }
+            #description{
+                p{
+                    margin: 5px 0px;
+                    font-size: 12px;
+                }
+                #descript{
+                    font-size: 20px;
+                    font-family: 'Irish Grover';
+                    
+                }
+            }
+        }
+    }
+}
+
+.mini-titles{
+    margin: 5px 0px;
+    font-size: 16px;
+    font-weight: bold;
+    font-family: 'Irish Grover';
+}
+#amount{
+    font-size: 32px;
+    font-family: 'Inika';
+    margin: 1px 0px;
+    margin-right: 15px;
+    margin-bottom: 20px;
+    text-align: end;
+}
+#date{
+    font-family: 'Inika';
+    margin: 1px 0px;
+    font-size: 14px;
+    text-align: end;
+}

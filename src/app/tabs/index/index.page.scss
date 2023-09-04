@@ -1,0 +1,31 @@
+#container{
+    #header{
+        background-color: var(--ion-color-light);
+        margin-top: 3vh;
+        padding: 15px;
+        border-radius: 25px;
+        #generalInfo{
+            div{
+                display: flex;
+                flex-direction: row;
+            }
+            #club{
+                margin-top: 4vh;
+            }
+        }
+        #balance{
+            display: flex;
+            flex-direction: column;
+            justify-content: end;
+            align-items: center;
+            div{
+                h2{
+                    font-size: 32px;
+                }
+            }
+        }
+    }
+    #transactions{
+        margin-top: 7vh;
+    }
+}

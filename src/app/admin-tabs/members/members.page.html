@@ -1,0 +1,62 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>members</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" color="medium">
+  <ion-grid id="container">
+    <ion-row id="filter">
+      <ion-col size="12">
+        <ion-item>
+          <ion-label>Zone</ion-label>
+          <ion-select value="" [(ngModel)]="zone" (ionChange)="getClubs()" [(ngModel)]="zone" multiple="false" placeholder="Zone">
+            <ion-select-option value="">None</ion-select-option>
+            <ion-select-option value="Zone 1">Zone 1</ion-select-option>
+            <ion-select-option value="Zone 2">Zone 2</ion-select-option>
+            <ion-select-option value="Zone 3">Zone 3</ion-select-option>
+            <ion-select-option value="Zone 4">Zone 4</ion-select-option>
+            <ion-select-option value="Zone 5">Zone 5</ion-select-option>
+            <ion-select-option value="Zone 6">Zone 6</ion-select-option>
+            <ion-select-option value="Zone 7">Zone 7</ion-select-option>
+            <ion-select-option value="Zone 8">Zone 8</ion-select-option>
+            <ion-select-option value="Zone 9">Zone 9</ion-select-option>
+            <ion-select-option value="Zone 10">Zone 10</ion-select-option>
+            <ion-select-option value="Zone 11">Zone 11</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-col>
+      <ion-col size="12">
+        <ion-item>
+          <ion-label>Club</ion-label>
+          <ion-select value="" multiple="false" [(ngModel)]="clubId" placeholder="Select Club">
+            <ion-select-option *ngFor="let club of clubs" [value]="club.id">{{club.name}}</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-col>
+      <ion-col size="12">
+        <ion-button (click)="filter()" expand="block"  shape="round">
+          Filter
+        </ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-row id="members" class="ion-justify-content-center">
+      <ion-col size="12" *ngFor="let member of adminS.members">
+        <div>
+          <ion-avatar>
+            <img [src]=""/>
+          </ion-avatar>
+          <ion-label>
+            <p>{{member.firstName}} {{member.lastName}}</p>
+            <p>{{member.role}}</p>
+            <small>{{member.clubName}} || {{member.clubZone}}</small>
+          </ion-label>
+        </div>
+        <p *ngIf="member.total != 0">{{member.total}}</p>
+      </ion-col>
+      <ion-infinite-scroll (ionInfinite)="getMoreMembers()">
+        <ion-infinite-scroll-content></ion-infinite-scroll-content>
+      </ion-infinite-scroll>
+    </ion-row>
+  </ion-grid>
+</ion-content>
