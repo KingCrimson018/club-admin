@@ -63,4 +63,11 @@ export class ClubService {
       })
     }
    }
+
+   disableMember(memberId: string){
+    return this.fs.collection<User>("users").doc(memberId).update({disable: true})
+   }
+   enableMember(memberId: string){
+    return this.fs.collection<User>("users").doc(memberId).update({disable: false})
+   }
 }

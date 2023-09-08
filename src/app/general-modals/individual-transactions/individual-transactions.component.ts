@@ -19,6 +19,10 @@ export class IndividualTransactionsComponent  implements OnInit {
 
   ngOnInit() {
     this.date = new Date(this.transaction.date.seconds * 1000);
+    console.log(this.userS.logged?.id);
+    
+    console.log(this.transaction);
+    
   }
 
 }

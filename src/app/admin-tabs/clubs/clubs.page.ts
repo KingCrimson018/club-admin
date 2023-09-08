@@ -18,6 +18,11 @@ export class ClubsPage implements OnInit {
   ) { }
 
   ngOnInit() {
+    setTimeout(() => {
+      if(this.adminS.clubs.length <= 0){
+        this.infiniteScroll.disabled = true
+      }
+    },100)
   }
 
   filter(){

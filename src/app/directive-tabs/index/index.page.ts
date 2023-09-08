@@ -17,10 +17,15 @@ export class IndexPage implements OnInit {
     public clubS: ClubService,
     public ts: TransactionService
   ) { 
-
+    
   }
 
   ngOnInit() {
+    setTimeout(() => {
+      if(this.ts.completeReceiver && this.ts.completeSender){
+        this.infiniteScroll.disabled = true
+      }
+    },100)
   }
 
   getLogged(){

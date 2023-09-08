@@ -1,0 +1,8 @@
+ion-list{
+    background: var(--ion-color-secondary);
+}
+ion-item{
+    margin-top: 2vh;
+    --background: rgba(var(--ion-color-light), 0.3);
+    color: var(--ion-color-light);
+}

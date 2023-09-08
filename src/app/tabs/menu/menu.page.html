@@ -1,14 +1,15 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>menu</ion-title>
-  </ion-toolbar>
-</ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-list>
+<ion-content [fullscreen]="true" color="secondary">
+  <ion-list color="secondary">
+    <ion-item routerLink="/events">
+      <ion-icon slot="start" name="calendar-clear-outline" size="large" color="light"></ion-icon>
+      <ion-label>Events</ion-label>
+      <ion-icon slot="end" name="arrow-forward" size="large" color="light"></ion-icon>
+    </ion-item>
     <ion-item (click)="logOut()">
-      <ion-icon name="log-out"></ion-icon>
+      <ion-icon slot="start" name="log-out-outline"  size="large" color="light"></ion-icon>
       <ion-label>Log Out</ion-label>
+      <ion-icon slot="end" name="arrow-forward" size="large" color="light"></ion-icon>
     </ion-item>
   </ion-list>
 </ion-content>

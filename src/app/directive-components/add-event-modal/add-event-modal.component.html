@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar color="tertiary">
+    <ion-buttons slot="start">
+      <ion-button (click)="close()" expand="block" fill="clear" shape="round">
+        Close
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Add Event</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+  <form [formGroup]="eventForm" (ngSubmit)="addEvent()">
+    <div class="inputs">
+      <ion-input required placeholder="Title: " formControlName="title" type="text"></ion-input>
+    </div>
+    <div class="inputs">
+      <ion-input required placeholder="Description: " formControlName="description" type="text"></ion-input>
+    </div>
+    <div id="datePicker">
+      <ion-label>Date of Event</ion-label>
+      <ion-datetime formControlName="date" display-format="DD.MM.YYYY HH:mm"></ion-datetime>
+    </div>
+    <ion-button block color="primary" type="submit" [disabled]="eventForm.invalid">
+      Add Event
+    </ion-button>
+  </form>

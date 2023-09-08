@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AlertController } from '@ionic/angular';
 import { User } from 'src/app/models.ts/models';
 import { UserService } from 'src/app/services/user.service';
 
@@ -14,7 +15,8 @@ export class AddUserPage implements OnInit {
 
   constructor(
     private userS: UserService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private alertController: AlertController
   ) {
     this.userForm = this.fb.group({
       "email": ["", Validators.required],
@@ -41,7 +43,31 @@ export class AddUserPage implements OnInit {
       clubName: this.userS.logged?.clubName || ''
     }
 
+
+
     this.userS.addUser(newUser, this.userForm.value.password)
+  }
+
+  async showAlert(){
+    const alert = await this.alertController.create({
+      header: "Atention",
+      message: "Please enter your password to continue",
+      inputs: [
+        {
+          placeholder: "Password: ",
+          type: "password",
+        }
+      ],
+      buttons: [
+        {
+          text: "Ok",
+          role: "Ok",
+          handler: () => {
+            this.addUser()
+          }
+        }
+      ]
+    })
   }
 
 }

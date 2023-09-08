@@ -1,0 +1,30 @@
+ion-row{
+    animation: enterTransactions 0.3s;
+}
+
+
+#notFound {
+    margin-top: 25vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    img{
+        width: 200px;
+        height: 300px;
+    }
+    ion-label{
+        font-size: 32px;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    }
+}
+
+
+@keyframes enterTransactions {
+    0% {
+        transform: translate(-500px, 0px);
+    }
+    100% {
+        transform: translate(0px, 0px);
+    }
+}

@@ -1,4 +1,36 @@
 #filter{
     background-color: var(--ion-color-light);
     border-radius: 25px;
+    margin-top: 2vh;
+    animation: enterFilter 0.3s;
+    ion-col{
+        ion-item{
+            border-radius: 25px;
+        }
+    }
+}
+
+#notFound {
+    margin-top: 15vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    img{
+        width: 200px;
+        height: 300px;
+    }
+    ion-label{
+        font-size: 32px;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    }
+}
+
+@keyframes enterFilter {
+    0% {
+        transform: scale(0);
+    }
+    100% {
+        transform: scale(1);
+    }
 }

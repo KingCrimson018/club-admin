@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar color="tertiary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Events</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true" color="secondary">
+  <ion-grid id="container">
+    <ion-row id="filter">
+      <ion-col size="12">
+        <ion-item>
+          <ion-label>Status</ion-label>
+          <ion-select value="" [(ngModel)]="status" multiple="false" placeholder="Select Status">
+            <ion-select-option value="">All</ion-select-option>
+            <ion-select-option value="true">Complete</ion-select-option>
+            <ion-select-option value="false">Incomplete</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-col>
+      <ion-col size="12">
+        <ion-button (click)="filter()" expand="block" shape="round">
+          Filter
+        </ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-row *ngIf="eventS.events.length <= 0" class="ion-justify-content-center">
+      <ion-col size="10" id="notFound" >
+        <img  src="../../../assets/images/notFound/girlClub2.png" alt="">
+        <ion-label>No Events Yet</ion-label>
+      </ion-col>
+    </ion-row>
+    <ion-row id="events" class="ion-justify-content-center" >
+      <ion-col size="12" *ngFor="let event of eventS.events">
+        <div>
+          <ion-label>
+            <small>{{event.date | date: "dd-MMM-yyyy hh:mm a"}}</small>
+            <h2>{{event.title}}</h2>
+            <p>{{event.description}}</p>
+          </ion-label>
+        </div>
+        <ion-icon [name]="event.complete == true ? 'checkbox' : 'square-outline'" color="primary" size="large"></ion-icon>
+      </ion-col>
+    </ion-row>
+  </ion-grid>

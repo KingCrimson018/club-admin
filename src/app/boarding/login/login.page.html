@@ -1,14 +1,17 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>login</ion-title>
-  </ion-toolbar>
-</ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-input type="text" [(ngModel)]="email" placeholder="Email: "></ion-input>
-  <ion-input type="password" [(ngModel)]="password" placeholder="Password: "></ion-input>
+  <div id="container" >
+    <div id="form">
+      <img src="../../../assets/images/logo.png" alt="">
+      <div id="email">
+        <ion-input type="text" [(ngModel)]="email" placeholder="Email: "></ion-input>
+      </div>
+      <div id="password">
+        <ion-input type="password" [(ngModel)]="password" placeholder="Password: "></ion-input>
+      </div>
+      <ion-button (click)="logIn()" expand="block"  shape="round">
+        Log In
+      </ion-button>
+    </div>
+  </div>
 
-  <ion-button (click)="logIn()" expand="block" fill="clear" shape="round">
-    Log In
-  </ion-button>
-</ion-content>
+

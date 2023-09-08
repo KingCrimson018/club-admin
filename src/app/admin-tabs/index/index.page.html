@@ -1,10 +1,6 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>index</ion-title>
-  </ion-toolbar>
-</ion-header>
 
-<ion-content [fullscreen]="true" color="medium">
+
+<ion-content [fullscreen]="true" color="secondary">
   <ion-grid id="container">
     <ion-row id="general">
       <ion-col size="8" id="general-info">
@@ -21,13 +17,13 @@
       </ion-col>
     </ion-row>
     <ion-row id="options">
-      <ion-col size="6" routerLink="/add-director">
+      <ion-col size="6" routerLink="/add-director" id="add-director">
         <ion-item>
           <ion-icon slot="start" name="person-add-outline" size="large"></ion-icon>
           <ion-label>Add Director</ion-label>
         </ion-item>
       </ion-col>
-      <ion-col size="6" routerLink="/add-club">
+      <ion-col size="6" routerLink="/add-club"  id="add-club">
         <ion-item>
           <ion-icon slot="start" name="add-circle-outline" size="large"></ion-icon>
           <ion-label>Add Club</ion-label>

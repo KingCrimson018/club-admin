@@ -26,7 +26,7 @@ export class IntroPage implements OnInit {
       }else{
         this.router.navigate(['directive-tabs/index'])
       }
-    }, 2000)
+    }, 2500)
   }
 
 }

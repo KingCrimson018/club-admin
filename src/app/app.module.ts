@@ -6,13 +6,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { GeneralModalsModule } from './general-modals/general-modals.module';
 import { DirectiveComponentsModule } from './directive-components/directive-components.module';
+
 //Firebase//
 
 import {AngularFireModule} from '@angular/fire/compat'
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore'
 import { AngularFireAuthModule } from '@angular/fire/compat/auth'
-import { AngularFireStorageModule } from '@angular/fire/compat/storage'
-import { environment } from 'src/environments/environment';
+import { environment } from 'src/environments/environment.prod';
 
 @NgModule({
   declarations: [AppComponent],
@@ -23,7 +23,7 @@ import { environment } from 'src/environments/environment';
       AngularFireModule.initializeApp(environment.firebaseConfig),
       AngularFireAuthModule,
       AngularFirestoreModule,
-      AngularFireStorageModule,
+
     ),
     
     //Modals

@@ -21,6 +21,11 @@ export class TransactionsPage implements OnInit {
   ) { }
 
   ngOnInit() {
+    setTimeout(() => {
+      if(this.clubS.transactions.length <= 0){
+        this.infiniteScroll.disabled = true
+      }
+    },100)
   }
 
   filter(){

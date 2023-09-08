@@ -4,6 +4,7 @@
         margin-top: 3vh;
         padding: 15px;
         border-radius: 25px;
+        animation: enterHeader 0.5s;
         #generalInfo{
             div{
                 display: flex;
@@ -21,11 +22,46 @@
             div{
                 h2{
                     font-size: 32px;
+                    color: black;
                 }
             }
         }
     }
     #transactions{
+        animation: enterTransactions 0.5s;
         margin-top: 7vh;
+    }
+}
+
+#notFound {
+    margin-top: 10vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    img{
+        width: 200px;
+        height: 300px;
+    }
+    ion-label{
+        font-size: 32px;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    }
+}
+
+@keyframes enterHeader {
+    0% {
+        transform: translate(0px, -100px);
+    }
+    100% {
+        transform: translate(0px, 0px);
+    }
+}
+@keyframes enterTransactions {
+    0% {
+        transform: translate(0px, 500px);
+    }
+    100% {
+        transform: translate(0px, 0px);
     }
 }

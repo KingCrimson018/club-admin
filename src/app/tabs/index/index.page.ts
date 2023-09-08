@@ -23,7 +23,11 @@ export class IndexPage implements OnInit {
    }
 
   ngOnInit() {
-    console.log(new Date());
+    setTimeout(() => {
+      if(this.ts.completeReceiver && this.ts.completeSender){
+        this.infiniteScroll.disabled = true
+      }
+    },100)
   }
 
   getTransactionsRefreshed(event: any){
