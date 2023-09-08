@@ -1,41 +1,38 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar color="secondary">
     <ion-buttons slot="start">
-      <ion-button (click)="close()">
-        <ion-icon slot="start" name="add"></ion-icon>
+      <ion-button (click)="close()" slot="start">
         Cancel
       </ion-button>
     </ion-buttons>
-    <ion-title>Header</ion-title>
+    <ion-title slot="end">Add User</ion-title>
   </ion-toolbar>
 </ion-header>
-<ion-content>
-  <form [formGroup]="userForm" (ngSubmit)="addUser()">
-    <ion-item>
-      <ion-label position="floating">First Name <ion-text color="danger">*</ion-text></ion-label>
-      <ion-input required formControlName="firstName" type="text"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="floating">Last Name <ion-text color="danger">*</ion-text></ion-label>
-      <ion-input required formControlName="lastName" type="text"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label>Role</ion-label>
-      <ion-select value="member" multiple="false" formControlName="role" placeholder="Select Role">
-        <ion-select-option value="member">Member</ion-select-option>
-        <ion-select-option value="treasurer">Treasurer</ion-select-option>
-        <ion-select-option value="secretary">Secretary</ion-select-option>
-        <ion-select-option value="sub-director">Sub-Director</ion-select-option>
-      </ion-select>
-    </ion-item>
-    <ion-item>
-      <ion-label position="floating">E-Mail <ion-text color="danger">*</ion-text></ion-label>
-      <ion-input required formControlName="email" type="text"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="floating">Password <ion-text color="danger">*</ion-text></ion-label>
-      <ion-input required formControlName="password" type="text"></ion-input>
-    </ion-item>
+<ion-content color="tertiary">
+  <form [formGroup]="userForm" (ngSubmit)="decideToAdd()">
+    <div>
+      <ion-input required placeholder="First Name: " formControlName="firstName" type="text"></ion-input>
+    </div>
+    <div>
+      <ion-input required placeholder="Last Name: " formControlName="lastName" type="text"></ion-input>
+    </div>
+    <div class="select">
+      <ion-item>
+        <ion-label>Role</ion-label>
+        <ion-select value="member" multiple="false" formControlName="role" placeholder="Select Role">
+          <ion-select-option value="member">Member</ion-select-option>
+          <ion-select-option value="treasurer">Treasurer</ion-select-option>
+          <ion-select-option value="secretary">Secretary</ion-select-option>
+          <ion-select-option value="sub-director">Sub-Director</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </div>
+    <div>
+      <ion-input required placeholder="Email: " formControlName="email" type="text"></ion-input>
+    </div>
+    <div>
+      <ion-input required placeholder="Password: " formControlName="password" type="text"></ion-input>
+    </div>
     <ion-button block color="primary" type="submit" [disabled]="userForm.invalid">
       Create
     </ion-button>

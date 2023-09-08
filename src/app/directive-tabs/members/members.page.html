@@ -1,21 +1,17 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>Members</ion-title>
-  </ion-toolbar>
-</ion-header>
 
-<ion-content [fullscreen]="true" color="medium">
+
+<ion-content [fullscreen]="true" color="secondary">
   <ion-grid id="container">
     <ion-row id="search-bar">
       <ion-col size="10">
         <ion-input type="text" placeholder="Search"></ion-input>
       </ion-col>
       <ion-col size="2">
-        <ion-icon name="search" size="large"></ion-icon>
+        <ion-icon name="search" size="large" color="secondary"></ion-icon>
       </ion-col>
     </ion-row>
     <ion-row id="members" class="ion-justify-content-center">
-      <ion-col size="12" *ngFor="let member of clubS.members">
+      <ion-col size="12" *ngFor="let member of clubS.members" >
         <div>
           <ion-avatar>
             <img [src]=""/>
@@ -26,6 +22,7 @@
           </ion-label>
         </div>
         <p>{{member.total}}</p>
+        <ion-icon name="menu-outline" (click)="presentActionSheet(member)" size="large" color="dark"></ion-icon>
       </ion-col>
       
     </ion-row>

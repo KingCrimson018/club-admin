@@ -12,6 +12,6 @@ export class GeneralServicesService {
   ) { }
 
   getUsersPerClub(id: string){
-    return this.fs.collection<User>('users', ref => ref.where("idClub", "==", id)).get()
+    return this.fs.collection<User>('users', ref => ref.where("idClub", "==", id).where("disable", "!=", true)).get()
   }
 }

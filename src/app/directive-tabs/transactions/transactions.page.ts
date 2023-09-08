@@ -18,6 +18,11 @@ export class TransactionsPage implements OnInit {
   ) { }
 
   ngOnInit() {
+    setTimeout(() => {
+      if(this.clubS.completeTransaction){
+        this.infiniteScroll.disabled = true
+      }
+    },100)
   }
 
   getTransactionsRefreshed(event: any){

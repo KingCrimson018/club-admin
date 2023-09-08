@@ -21,6 +21,7 @@ export interface User {
     firstName: string
     lastName: string   
     total: 0
+    disable?: boolean
 }
 export interface Transaction{
     id: string
@@ -46,4 +47,13 @@ export interface Receiver{
     lastName: string
     profilePhoto: string
     totalAfter: number
+}
+
+export interface Event {
+    id: string
+    idClub: string
+    title: string
+    description: string
+    date: any
+    complete: boolean
 }

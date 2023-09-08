@@ -1,0 +1,34 @@
+#container{
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background: var(--ion-color-secondary);
+}
+
+#photo{
+    width: 250px;
+    height: 250px;
+    animation: enterAnimation 1s ease;
+    img{
+        object-fit: contain;
+        width: 100%;
+        height: 100%;
+    }
+}
+
+@keyframes enterAnimation {
+    0% {
+        width: 0px;
+        height: 0px;
+    }
+    50% {
+        width: 400px;
+        height: 400px;
+    }
+    100% {
+        width: 250px;
+        height: 250px;
+    }
+}

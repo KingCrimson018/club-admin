@@ -5,11 +5,12 @@ import { IonicModule } from '@ionic/angular';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AddUserModalComponent } from './add-user-modal/add-user-modal.component';
 import { MakeDepositModalComponent } from './make-deposit-modal/make-deposit-modal.component';
+import { AddEventModalComponent } from './add-event-modal/add-event-modal.component';
 
 
 
 @NgModule({
-  declarations: [FullTransactionComponent, AddUserModalComponent, MakeDepositModalComponent],
+  declarations: [FullTransactionComponent, AddUserModalComponent, MakeDepositModalComponent, AddEventModalComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   imports: [
     CommonModule,
@@ -17,6 +18,6 @@ import { MakeDepositModalComponent } from './make-deposit-modal/make-deposit-mod
     FormsModule,
     ReactiveFormsModule
   ],
-  exports: [FullTransactionComponent, AddUserModalComponent, MakeDepositModalComponent]
+  exports: [FullTransactionComponent, AddUserModalComponent, MakeDepositModalComponent, AddEventModalComponent]
 })
 export class DirectiveComponentsModule { }

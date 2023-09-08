@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ModalController } from '@ionic/angular';
+import { AlertController, ModalController } from '@ionic/angular';
 import { User } from 'src/app/models.ts/models';
+import { ClubService } from 'src/app/services/club.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -11,10 +12,13 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class AddUserModalComponent  implements OnInit {
   userForm!: FormGroup
+  storedPassword: string = ""
   constructor(
     private fb: FormBuilder,
     private modalController: ModalController,
-    private userS: UserService
+    private userS: UserService,
+    private clubS: ClubService,
+    private alertController: AlertController
   ) { 
     this.userForm = this.fb.group({
       "email": ["", Validators.required],
@@ -36,12 +40,49 @@ export class AddUserModalComponent  implements OnInit {
       firstName: this.userForm.value.firstName,
       lastName: this.userForm.value.lastName,
       total: 0,
-      clubName: this.userS.logged?.clubName || ""
+      clubName: this.clubS.club?.name || "",
+      clubZone: this.clubS.club?.zone || ""
     }
-    this.userS.addUser(newUser, this.userForm.value.password).then(() => {
+    this.userS.addUser(newUser, this.userForm.value.password, this.userS.storedPassword).then(() => {
       this.close()
     }) 
   }
+
+  async showAlert(){
+    const alert = await this.alertController.create({
+      header: "Atention",
+      message: "Please enter your password to continue",
+      inputs: [
+        {
+          placeholder: "Password: ",
+          type: "password",
+          name: "storedPassword"
+          
+        }
+      ],
+      buttons: [
+        {
+          text: "Ok",
+          role: "Ok",
+          handler: (alertData) => {
+            this.userS.storedPassword = alertData.storedPassword
+            
+            this.addUser()
+          }
+        }
+      ]
+    })
+    await alert.present()
+  }
+
+  decideToAdd(){
+    if(this.userS.storedPassword){
+      this.addUser()
+    }else{
+      this.showAlert()
+    }
+  }
+
   close(){
     this.modalController.dismiss()
   }

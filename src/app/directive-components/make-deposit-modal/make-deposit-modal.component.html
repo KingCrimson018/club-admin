@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar color="tertiary">
     <ion-buttons slot="start">
       <ion-button (click)="close()">
         Close
@@ -8,22 +8,22 @@
     <ion-title>Make Deposit</ion-title>
   </ion-toolbar>
 </ion-header>
-<ion-content>
+<ion-content color="secondary">
   <form [formGroup]="transactionForm" (ngSubmit)="makeDeposit()">
-    <ion-item>
-      <ion-label>Destiny</ion-label>
-      <ion-select value="" multiple="false" formControlName="destiny" placeholder="Select Destiny">
-        <ion-select-option *ngFor="let user of users" [value]="user.id">{{user.firstName}} {{user.lastName}}</ion-select-option>
-      </ion-select>
-    </ion-item>
-    <ion-item>
-      <ion-label position="floating">Amount <ion-text color="danger">*</ion-text></ion-label>
-      <ion-input required formControlName="amount" type="number"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="floating">Description <ion-text color="danger">*</ion-text></ion-label>
-      <ion-input required formControlName="description" type="text"></ion-input>
-    </ion-item>
+    <div class="select">
+      <ion-item>
+        <ion-label>Destiny</ion-label>
+        <ion-select value="" multiple="false" formControlName="destiny" placeholder="Select Destiny">
+          <ion-select-option *ngFor="let user of users" [value]="user.id">{{user.firstName}} {{user.lastName}}</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </div>
+    <div>
+      <ion-input required placeholder="Amount: " formControlName="amount" type="number"></ion-input>
+    </div>
+    <div>
+      <ion-input required placeholder="Description: " formControlName="description" type="text"></ion-input>
+    </div>
     <ion-button block color="primary" type="submit" [disabled]="transactionForm.invalid">
       Deposit
     </ion-button>

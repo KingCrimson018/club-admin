@@ -2,6 +2,7 @@
     #search-bar{
         background: var(--ion-color-light);
         border-radius: 15px;
+        animation: enterFilter 0.5s;
         ion-col{
             display: flex;
             flex-direction: column;
@@ -11,6 +12,7 @@
     }
     #members{
         margin-top: 4vh;
+        animation: enterMembers 0.5s;
         ion-col{
             margin-top: 10px;
             height: 75px;
@@ -35,7 +37,30 @@
             p{
                 font-size: 32px;
                 font-weight: bold;
+                color: var(--ion-color-dark);
             }
         }
+    }
+}
+
+ion-input{
+    color: black;
+}
+
+@keyframes enterFilter {
+    0% {
+        transform: translate(0px, -100px );
+    }
+    100% {
+        transform: translate(0px, 0px);
+    }
+}
+
+@keyframes enterMembers {
+    0% {
+        transform: translate(0px, 500px );
+    }
+    100% {
+        transform: translate(0px, 0px);
     }
 }

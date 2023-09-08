@@ -1,0 +1,30 @@
+form{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    div{
+        margin-top: 25px;
+        width: 85%;
+        border: 2px solid white;
+        border-radius: 25px;
+        ion-input{
+            // color: white;
+            margin-left: 5%;
+            width: 85%;
+        }
+    }
+}
+
+.select{
+    background-color: white;
+    ion-item{
+        border-radius: 25px;
+    }
+}
+
+ion-button{
+    margin-top: 25px;
+}
+

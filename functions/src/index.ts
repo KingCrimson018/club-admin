@@ -65,3 +65,21 @@ export const sendNotificationOnTransaction = functions.firestore
       admin.messaging().send(msg);
     }
   });
+
+export const sendNotificationOnEvent = functions.firestore
+  .document("events/{id}")
+  .onCreate(async (snapshot) => {
+    const event = snapshot.data();
+    const ref = admin.firestore().collection("users");
+    const members = (await ref.where("idClub", "==", event.idClub).get()).docs;
+    members.forEach((member) => {
+      const msg = {
+        token: member.data().fcmToken,
+        notification: {
+          title: "New Event Added",
+          body: `${event.title}`,
+        },
+      };
+      admin.messaging().send(msg);
+    });
+  });

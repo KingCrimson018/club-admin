@@ -30,11 +30,17 @@ export class TransactionService {
       for (let transaction of res.docs){
         this.transactions.push(transaction.data())
       }
+      if(res.docs.length < 3){
+        this.completeSender = true
+      }
     }).then(() => {
       this.fs.collection<Transaction>("transactions", ref => ref.where("idReceiver", "==", id).orderBy("date", "desc").limit(2)).get().forEach(res => {
         this.lastTransactionReceiver = res.docs[res.docs.length - 1]
         for (let transaction of res.docs){
           this.transactions.push(transaction.data())
+        }
+        if(res.docs.length < 3){
+          this.completeReceiver = true
         }
       }).then(() => {
         this.transactions.sort((a,b) => b.date.seconds - a.date.seconds)
@@ -52,7 +58,7 @@ export class TransactionService {
           for (let transaction of res.docs){
             this.transactions.push(transaction.data())
           }
-          if(res.docs.length < 2){
+          if(res.docs.length < 3){
             this.completeSender = true
           }
         })
@@ -63,7 +69,7 @@ export class TransactionService {
           for (let transaction of res.docs){
             this.transactions.push(transaction.data())
           }
-          if(res.docs.length < 2){
+          if(res.docs.length < 3){
             this.completeReceiver = true
           }
 

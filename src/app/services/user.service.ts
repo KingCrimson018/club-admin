@@ -12,6 +12,7 @@ import {
   Token,
 } from '@capacitor/push-notifications';
 import { Platform } from '@ionic/angular';
+import { EventService } from './event.service';
 
 
 @Injectable({
@@ -19,13 +20,15 @@ import { Platform } from '@ionic/angular';
 })
 export class UserService {
   logged!: User | undefined
+  storedPassword!: string
   constructor(
     private auth: AngularFireAuth,
     private fs: AngularFirestore,
     private clubS: ClubService,
     private transactionS: TransactionService,
     private router: Router,
-    private platform: Platform
+    private platform: Platform,
+    private eventS: EventService
   ) {
     this.getUserLogged()
    }
@@ -34,22 +37,37 @@ export class UserService {
     return this.auth.signInWithEmailAndPassword(email, password).then(user => {
       this.fs.collection<User>("users").doc(user.user?.uid).get().forEach(res => {
         this.logged = res.data() 
-        if(res.data()?.role == "member"){
-          this.router.navigate(['tabs/index'])
-        }else if(res.data()?.role == "admin"){
-          this.router.navigate(['admin-tabs/index'])
+        if(res.data()?.disable == true){
+          alert("This account is Disabled. Please contact your Director")
+          this.logOut()
         }else{
-          this.router.navigate(['directive-tabs/index'])
+          if(res.data()?.role == "member"){
+            this.router.navigate(['tabs/index'])
+          }else if(res.data()?.role == "admin"){
+            this.router.navigate(['admin-tabs/index'])
+          }else{
+            this.router.navigate(['directive-tabs/index'])
+          }
         }
       })
     })
   }
-  addUser(user: User, password: string){
-    return this.auth.createUserWithEmailAndPassword(user.email, password)
-    .then(resU => {
-      user.id = resU.user?.uid || "";
-      this.fs.collection<User>("users").doc(user.id).set(user)
-    })
+  addUser(user: User, password: string, passwordLogged?: string){
+    if(passwordLogged){
+      return this.auth.createUserWithEmailAndPassword(user.email, password)
+      .then(resU => {
+        this.logIn(this.logged?.email || "", passwordLogged).then(() => {
+          user.id = resU.user?.uid || "";
+          this.fs.collection<User>("users").doc(user.id).set(user)
+        })
+      })
+    }else {
+      return this.auth.createUserWithEmailAndPassword(user.email, password)
+      .then(resU => {
+        user.id = resU.user?.uid || "";
+        this.fs.collection<User>("users").doc(user.id).set(user)
+      })
+    }
   }
   updateUser(user: User){
     return this.fs.collection<User>("users").doc(user.id).update(user)
@@ -67,7 +85,7 @@ export class UserService {
         }).then(() => {
           //Establecer las notificaciones a este usuario con este dispositivo
           this.setUpNotifications()
-
+          this.eventS.getEvents(this.logged?.idClub || "")
           //Esto si el usuario es el admin de un club. Asi tienes la info y no debes esperar
           if(this.logged?.role == "sub-director" || this.logged?.role =="director" || this.logged?.role == "secretary" || this.logged?.role == "treasurer"){
             this.clubS.getClubInfo(this.logged.idClub).then(() => {
@@ -121,7 +139,7 @@ export class UserService {
       PushNotifications.addListener(
         'pushNotificationReceived',
         (notification: PushNotificationSchema) => {
-          alert('Push received: ' + JSON.stringify(notification));
+          
         },
       );
   

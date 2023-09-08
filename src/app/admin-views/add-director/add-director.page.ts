@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AlertController } from '@ionic/angular';
 import { Club, User } from 'src/app/models.ts/models';
 import { AdminService } from 'src/app/services/admin.service';
-import { StorageService } from 'src/app/services/storage.service';
+
 
 
 import { UserService } from 'src/app/services/user.service';
@@ -25,7 +27,9 @@ export class AddDirectorPage implements OnInit {
     private userS: UserService,
     private adminS: AdminService,
     private fs: AngularFirestore,
-    private storageS: StorageService
+    private router: Router,
+    private alertController: AlertController
+
 
   ) {
     this.userForm = this.fb.group({
@@ -43,21 +47,6 @@ export class AddDirectorPage implements OnInit {
     this.idPhoto = this.fs.createId()
   }
 
-  // Photos Functions
-
-  uploadPhoto(event: any){
-    this.storageS.uploadImg(`users/${this.idPhoto}/photo`, event.target.files[0]).then(() => {
-      this.storageS.getImgUrl(`users/${this.idPhoto}/`).subscribe(async res => {
-        this.urlPhoto = await res.items[0].getDownloadURL()
-      })
-    })
-  }
-
-  deletePhoto(){
-    this.storageS.deleteImg(`users/${this.idPhoto}`)
-  }
-
-
   addDirector(){
     let newDirector: User = {
       id: '',
@@ -71,10 +60,13 @@ export class AddDirectorPage implements OnInit {
       firstName: this.userForm.value.firstName,
       lastName: this.userForm.value.lastName,
       total: 0,
-      clubName: this.clubName
+      clubName: this.clubName,
+      clubZone: this.userForm.value.zone
     }
 
-    this.userS.addUser(newDirector, this.userForm.value.password)
+    this.userS.addUser(newDirector, this.userForm.value.password, this.userS.storedPassword).then(() => {
+      this.router.navigate(['admin-tabs/index'])
+    })
   }
   getClubs(){
     this.adminS.getClubsByZone(this.userForm.value.zone).forEach(res => {
@@ -85,6 +77,41 @@ export class AddDirectorPage implements OnInit {
       }
     })
     
+  }
+  async showAlert(){
+    const alert = await this.alertController.create({
+      header: "Atention",
+      message: "Please enter your password to continue",
+      inputs: [
+        {
+          placeholder: "Password: ",
+          type: "password",
+          name: "storedPassword"
+          
+        }
+      ],
+      buttons: [
+        {
+          text: "Ok",
+          role: "Ok",
+          handler: (alertData) => {
+            this.userS.storedPassword = alertData.storedPassword
+            
+            this.addDirector()
+          }
+        }
+      ]
+    })
+    await alert.present()
+  }
+
+
+  decideToAdd(){
+    if(this.userS.storedPassword){
+      this.addDirector()
+    }else{
+      this.showAlert()
+    }
   }
 
   setClubName(clubName: string){

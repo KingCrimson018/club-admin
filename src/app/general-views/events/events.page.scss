@@ -1,0 +1,53 @@
+#container{
+    #filter{
+        background-color: var(--ion-color-light);
+        border-radius: 25px;
+        margin-top: 2vh;
+        ion-col{
+            ion-item{
+                border-radius: 25px;
+            }
+        }
+    }
+
+    #events{
+        margin-top: 2vh;
+        ion-col{
+            margin-bottom: 1.5vh;
+            background: var(--ion-color-light);
+            border-radius: 10px;
+            height: 12vh;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            div{
+                height: 12vh;
+                width: 75%;
+                margin-left: 2%;
+                ion-label{
+                    color: var(--ion-color-dark);
+                }
+            }
+            ion-icon{
+                margin-right: 3%;
+            }
+        }
+    }
+}
+
+#notFound {
+    margin-top: 20vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    img{
+        width: 200px;
+        height: 300px;
+    }
+    ion-label{
+        font-size: 32px;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    }
+}
