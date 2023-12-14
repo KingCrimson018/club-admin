@@ -25,7 +25,6 @@ export class UserService {
   constructor(
     private auth: AngularFireAuth,
     private fs: AngularFirestore,
-    private fst: AngularFireStorage,
     private clubS: ClubService,
     private transactionS: TransactionService,
     private router: Router,

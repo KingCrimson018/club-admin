@@ -12,7 +12,6 @@ import { DirectiveComponentsModule } from './directive-components/directive-comp
 import {AngularFireModule} from '@angular/fire/compat'
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore'
 import { AngularFireAuthModule } from '@angular/fire/compat/auth'
-import { AngularFireStorage } from '@angular/fire/compat/storage'
 import { environment } from 'src/environments/environment.prod';
 
 @NgModule({
@@ -24,7 +23,6 @@ import { environment } from 'src/environments/environment.prod';
       AngularFireModule.initializeApp(environment.firebaseConfig),
       AngularFireAuthModule,
       AngularFirestoreModule,
-      AngularFireStorage
     ),
     
     //Modals
