@@ -53,10 +53,6 @@ export class AddDirectorPage implements OnInit {
       idClub: this.userForm.value.idClub,
       email: this.userForm.value.email,
       role: 'director',
-      imgProfile: {
-        idPhoto: this.idPhoto,
-        urlPhoto: this.urlPhoto
-      },
       firstName: this.userForm.value.firstName,
       lastName: this.userForm.value.lastName,
       total: 0,

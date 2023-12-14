@@ -11,10 +11,7 @@ export interface User {
     clubName: string
     clubZone?: string
     fcmToken?: string
-    imgProfile?: {
-        idPhoto: string,
-        urlPhoto: string
-    }
+    imgProfile?: string
     email: string
     role:  "admin" | "director" |  "sub-director" | "secretary" | "treasurer" | "member"
     class?: string

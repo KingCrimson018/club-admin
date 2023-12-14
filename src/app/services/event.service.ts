@@ -49,7 +49,7 @@ export class EventService {
     return this.fs.collection<Event>("events").doc(event.id).delete()
   }
   completeEvent(event: Event){
-    return this.fs.collection<Event>("events").doc(event.id).update({complete: true})
+    return this.fs.collection<Event>("events").doc(event.id).update({complete: !event.complete})
   }
 
 

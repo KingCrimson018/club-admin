@@ -30,13 +30,18 @@ export class MakeDepositModalComponent  implements OnInit {
   }
 
   ngOnInit() {
-    this.gs.getUsersPerClub(this.clubS.club?.id || "").forEach(res => {
-      for(let user of res.docs){
-        if(user.data().role == "member"){
-          this.users.push(user.data())
+
+    setTimeout(() => {
+      this.gs.getUsersPerClub(this.clubS.club?.id || "").forEach(res => {
+        console.log(res);
+        
+        for(let user of res.docs){
+          if(user.data().role == "member"){
+            this.users.push(user.data())
+          }
         }
-      }
-    })
+      })
+    },1000  )
   }
 
   makeDeposit(){

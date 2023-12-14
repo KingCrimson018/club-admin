@@ -59,7 +59,11 @@ const routes: Routes = [
     path: 'events',
     loadChildren: () => import('./general-views/events/events.module').then( m => m.EventsPageModule),
     canActivate: [GeneralGuardGuard]
+  },  {
+    path: 'profile-photo',
+    loadChildren: () => import('./general-views/profile-photo/profile-photo.module').then( m => m.ProfilePhotoPageModule)
   }
+
 
 
 ];

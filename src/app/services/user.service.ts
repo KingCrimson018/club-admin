@@ -13,6 +13,7 @@ import {
 } from '@capacitor/push-notifications';
 import { Platform } from '@ionic/angular';
 import { EventService } from './event.service';
+import { AngularFireStorage } from '@angular/fire/compat/storage';
 
 
 @Injectable({
@@ -24,6 +25,7 @@ export class UserService {
   constructor(
     private auth: AngularFireAuth,
     private fs: AngularFirestore,
+    private fst: AngularFireStorage,
     private clubS: ClubService,
     private transactionS: TransactionService,
     private router: Router,
@@ -53,6 +55,7 @@ export class UserService {
     })
   }
   addUser(user: User, password: string, passwordLogged?: string){
+    user.disable = false
     if(passwordLogged){
       return this.auth.createUserWithEmailAndPassword(user.email, password)
       .then(resU => {

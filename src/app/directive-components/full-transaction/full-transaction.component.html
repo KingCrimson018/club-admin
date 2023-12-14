@@ -5,7 +5,7 @@
         <p class="mini-titles">Desde: </p>
         <div class="name">
           <ion-avatar>
-            <img [src]="" />
+            <img [src]="transaction.idSender == transaction.idClub ? '../../../assets//images/photos/club.png' : '../../../assets//images/photos/user.png'" />
           </ion-avatar>
           <ion-label>
             <p>{{transaction.sender?.firstName}}</p>
@@ -24,7 +24,7 @@
         <p class="mini-titles">Hasta: </p>
         <div class="name">
           <ion-avatar>
-            <img [src]="" />
+            <img [src]="transaction.idReceiver == transaction.idClub  ? '../../../assets//images/photos/club.png' : '../../../assets//images/photos/user.png'" />
           </ion-avatar>
           <ion-label>
             <p>{{transaction.receiver?.firstName}}</p>
