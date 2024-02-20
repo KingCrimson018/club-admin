@@ -5,7 +5,7 @@
             <small *ngIf="transaction.idSender != userS.logged?.id && transaction.type != 'deposit'" class="black">Desde:</small>
             <div *ngIf="transaction.idSender == userS.logged?.id || transaction.type == 'deposit'">
                 <ion-avatar>
-                    <img [src]="transaction.idReceiver == transaction.idClub ? '../../../assets//images/photos/club.png' : '../../../assets//images/photos/user.png'"  />
+                    <img [src]="transaction.idReceiver == transaction.idClub ? '../../../assets//images/photos/club.png' : '/assets/images/photos/user.png'"  />
                 </ion-avatar>
                 <ion-label >
                     <h2 class="black">{{transaction.receiver?.firstName}}</h2>
@@ -15,7 +15,7 @@
             </div>
             <div *ngIf="transaction.idSender != userS.logged?.id  && transaction.type != 'deposit'">
                 <ion-avatar>
-                    <img [src]="transaction.idSender == transaction.idClub ? '../../../assets//images/photos/club.png' : '../../../assets//images/photos/user.png'"  />
+                    <img [src]="transaction.idSender == transaction.idClub ? '../../../assets//images/photos/club.png' : '/assets/images/photos/user.png'"  />
                 </ion-avatar>
                 <ion-label >
                     <h2 class="black">{{transaction.sender?.firstName}}</h2>

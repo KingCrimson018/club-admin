@@ -38,7 +38,7 @@
     </ion-row>
     <ion-row *ngIf="adminS.clubs.length <= 0" class="ion-justify-content-center">
       <ion-col size="10" id="notFound" >
-        <img  src="../../../assets/images/notFound/girlClub2.png" alt="">
+        <img  src="/assets/images/notFound/girlClub2.png" alt="">
         <ion-label>No Clubs Yet</ion-label>
       </ion-col>
     </ion-row>
@@ -46,7 +46,7 @@
       <ion-col size="12" *ngFor="let club of adminS.clubs">
         <div>
           <ion-avatar>
-            <img src="../../../assets//images/photos/club.png"/>
+            <img src="/assets//images/photos/club.png"/>
           </ion-avatar>
           <ion-label>
             <p>{{club.name}}</p>

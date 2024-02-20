@@ -7,12 +7,20 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:267116688432:android:1e566ad92772a2719b29f5",
+        "mobilesdk_app_id": "1:267116688432:android:f65ca40359d2d8a09b29f5",
         "android_client_info": {
-          "package_name": "io.ionic.starter"
+          "package_name": "eli.dev018.clubAdmin"
         }
       },
       "oauth_client": [
+        {
+          "client_id": "267116688432-jimps6md7nfecflq0llns25clhgpcaer.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "eli.dev018.clubAdmin",
+            "certificate_hash": "6b4d7d555f1da8c3479bb65f1b600910f6d0d22f"
+          }
+        },
         {
           "client_id": "267116688432-jtifs080gl9nkonl3nj0g12u1n9ak5js.apps.googleusercontent.com",
           "client_type": 3
